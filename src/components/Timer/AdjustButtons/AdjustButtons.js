@@ -49,6 +49,10 @@ let app = {
         columns[(i % columnNumber)].push(preset)
       })
 
+      if (this.isPlus === false) {
+        columns.reverse()
+      }
+
       return columns
     },
   },

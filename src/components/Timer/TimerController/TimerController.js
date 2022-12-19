@@ -39,6 +39,17 @@ let app = {
     
   },
   methods: {
+    onClick () {
+      if (this.db.config.currentTime < 0) {
+        this.startCountdown()
+      }
+      else if (this.db.config.isCountdowning === true) {
+        this.pauseCountdown()
+      }
+      else {
+        this.resumeCountdown()
+      }
+    },
     startCountdown () {
       this.stopSound()
       this.db.config.currentTime = this.db.localConfig.timeLimit

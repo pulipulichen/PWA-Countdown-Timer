@@ -21,6 +21,15 @@ let Index = {
     Timer
   },
   computed: {
+    isInIframe () {
+      try {
+        if (window.self !== window.top) {
+          return false
+        }
+      } catch (e) {
+        return true
+      }
+    }
   },
   watch: {
     'db.config.inited'(inited) {
@@ -41,13 +50,25 @@ let Index = {
       this.$refs.SoundSelector.pause()
     },
     resizeWindow: async function () {
-      await this.db.utils.AsyncUtils.sleep(1000)
+      if (this.isInIframe) {
+        return false
+      }
+      await this.db.utils.AsyncUtils.sleep(300)
 
       let el = this.$el
       // console.log(el.offsetWidth, el.offsetHeight)
 
-      let padding = 50
-      window.resizeTo(el.offsetWidth + padding, el.offsetHeight + (padding * 2))
+      let padding = 100
+      let {width, height} = el.getBoundingClientRect()
+      width = width + (padding * 0.7)
+      height = height + padding
+      // console.log(width, height)
+      window.resizeTo(width, height)
+
+      document.body.addEventListener('dblclick', () => {
+        this.resizeWindow()
+      })
+      // window.resizeTo(el.offsetWidth + padding, el.offsetHeight + (padding * 2))
     }
   }
 }

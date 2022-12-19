@@ -1,5 +1,6 @@
 <div class="AdjustButtons">
   <div class="ui vertical buttons"
+    :class="{plus: isPlus, minus: !isPlus}"
     v-for="column in intervalPresetColumns">
     <button 
       v-for="preset in column"

@@ -1,23 +1,14 @@
 <div class="Timer">
-  <div class="timer-minus-container ui vertical buttons"
-    v-if="db.config.currentTime === -1">
-    <button 
-      v-for="preset in intervalPreset"
-      type="button" class="ui fluid button"
-      :class="{disabled: (db.localConfig.timeLimit <= preset.value)}"
-      @click="changeTimeLimit(-1 * preset.value)">{{ $t('-' + preset.name) }}</button>
-  </div>
-  <div class="timer-minus-container ui vertical buttons"
-    v-if="db.config.currentTime !== -1">
-    <button 
-      v-for="preset in intervalPreset"
-      type="button" class="ui fluid button"
-      :class="{disabled: (db.config.currentTime <= preset.value)}"
-      @click="changeTimeLimit(-1 * preset.value)">{{ $t('-' + preset.name) }}</button>
-  </div>
+  <AdjustButtons 
+    ref="AdjustButtons"
+    :db="db"
+    :time="time"
+    :isPlus="false">
+  </AdjustButtons>
 
   <div class="controller">
-    <div class="ui statistic">
+    <div class="ui statistic"
+      @click="triggerController">
       <div class="value">{{ displayTime }}</div>
     </div>
 
@@ -28,10 +19,18 @@
   </div>
     
 
+  <!--
   <div class="timer-plus-container ui vertical buttons">
     <button 
       v-for="preset in intervalPreset"
       type="button" class="ui fluid button"
       @click="changeTimeLimit(preset.value)">{{ $t('+' + preset.name) }}</button>
   </div>
+  -->
+  <AdjustButtons 
+    ref="AdjustButtons"
+    :db="db"
+    :time="time"
+    :isPlus="true">
+  </AdjustButtons>
 </div>

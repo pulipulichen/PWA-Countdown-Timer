@@ -19,6 +19,14 @@ let app = {
     },
   },
   computed: {
+    time () {
+      if (this.db.config.currentTime === -1) {
+        return this.db.localConfig.timeLimit
+      }
+      else {
+        return this.db.config.currentTime
+      }
+    },
     displayTime () {
       let time = this.db.localConfig.timeLimit
       if (this.db.config.currentTime > -1) {
@@ -83,6 +91,9 @@ let app = {
         }
         document.title = displayTime
       }
+    },
+    triggerController () {
+      this.$refs.TimerController.onClick()
     }
   }
 }
