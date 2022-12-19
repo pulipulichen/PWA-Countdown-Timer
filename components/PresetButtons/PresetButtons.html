@@ -1,8 +1,0 @@
-<div class="PresetButtons ui fluid buttons">
-  asas
-  <button type="button"
-    v-for="preset in db.config.timeLimitPresets"
-    class="ui button"
-    @click="db.localConfig.timeLimit = preset.value"
-    :class="{disabled: preset.value === db.localConfig.timeLimit}"></button>
-</div>
