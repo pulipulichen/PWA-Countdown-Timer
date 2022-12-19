@@ -143,8 +143,7 @@ let VueController = {
         return false
       }
 
-
-
+      // console.log(this.appName)
       let data = localStorage.getItem(this.appName)
       //console.log(data)
       if (data === null || data.startsWith('{') === false || data.endsWith('}') === false) {
@@ -168,10 +167,11 @@ let VueController = {
       }
 
       let data = this.db.localConfig
-      //console.log(data)
+      // console.log(this.appName)
+      // console.log(data)
       data = JSON.stringify(data)
       //console.log(data)
-      localStorage.setItem(this.db.config.appName, data)
+      localStorage.setItem(this.appName, data)
     }
   }
 }
@@ -180,7 +180,7 @@ let VueController = {
 
 for (let key in localConfig) {
   //console.log(key)
-  VueController.watch['localConfig.' + key] = function () {
+  VueController.watch['db.localConfig.' + key] = function () {
     this.saveToLocalStorage()
   }
 }

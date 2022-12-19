@@ -1,0 +1,21 @@
+<div class="SoundSelector field">
+  <div class="dropdown-action">
+    <select v-model="db.localConfig.sound"
+      @change="play">
+      <option v-for="sound in sounds"
+        :value="sound.name">{{ $t(sound.name) }}</option>
+    </select>
+    
+    <button type="button" class="ui button"
+      v-if="isPlaying"
+      @click="pause">
+      <i class="pause icon"></i>
+    </button>
+
+    <button type="button" class="ui button"
+      v-if="!isPlaying"
+      @click="play">
+      <i class="music icon"></i>
+    </button>
+  </div>
+</div>

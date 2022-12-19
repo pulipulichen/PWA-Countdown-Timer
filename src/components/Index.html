@@ -1,8 +1,12 @@
-<div class="Index">
+<div class="Index"
+  v-show="db.config.inited">
 
-  <Author 
-    ref="Author"
-    :db="db">
-  </Author>
+  <div class="ui compact segment form">
+    
+    <PresetButtons ref="PresetButtons" :db="db"></PresetButtons>
+    <Timer ref="Timer" :db="db"></Timer>
+    <SoundSelector ref="SoundSelector" :db="db"></SoundSelector>
+
+  </div>
 
 </div>

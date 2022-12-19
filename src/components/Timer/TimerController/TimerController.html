@@ -1,0 +1,35 @@
+<div class="TimerController ui large fluid buttons">
+  <button type="button" class="ui positive button"
+    v-if="db.config.currentTime < 0"
+    @click="startCountdown">
+    <i class="play icon"></i>
+  </button>
+
+  <template
+    v-if="db.config.isCountdowning === true">
+    <button type="button" class="ui button"
+      @click="pauseCountdown">
+      <i class="pause icon"></i>
+    </button>
+    <!--
+    <button type="button" class="ui negative button"
+      @click="endCountdown">
+      <i class="stop icon"></i>
+    </button>
+    -->
+  </template>
+
+  <template
+    v-if="db.config.isCountdowning === false && db.config.currentTime > -1">
+    <button type="button" class="ui button"
+      @click="resumeCountdown">
+      <i class="play icon"></i>
+    </button>
+    <button type="button" class="ui button"
+      @click="stopCountdown">
+      <i class="undo icon"></i>
+    </button>
+  </template>
+    
+
+</div>

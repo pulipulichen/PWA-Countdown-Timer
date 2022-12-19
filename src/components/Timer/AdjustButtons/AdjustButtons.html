@@ -1,0 +1,11 @@
+<div class="AdjustButtons">
+  <div class="ui vertical buttons"
+    v-for="column in intervalPresetColumns">
+    <button 
+      v-for="preset in column"
+      type="button" class="ui fluid button"
+      :class="computedClasses(preset.value)"
+      @click="changeTimeLimit(preset.value)">{{ displayPresetName(preset.name) }}</button>
+  </div>  
+</div>
+

@@ -1,0 +1,12 @@
+<div class="PresetButtons ui fluid buttons">
+  <button type="button"
+    v-for="preset in db.config.timeLimitPresets"
+    class="ui button"
+    @click="setTimeLimit(preset.value)"
+    :class="{disabled: preset.value === db.localConfig.timeLimit}">{{ preset.name }}</button>
+    <button type="button"
+      v-if="db.localConfig.lastTimeLimit > -1"
+      class="ui button"
+      @click="setTimeLimit(db.localConfig.lastTimeLimit)"
+      :class="{disabled: db.localConfig.lastTimeLimit === db.localConfig.timeLimit}">{{ displayLastTimeLimit }}</button>
+</div>

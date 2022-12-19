@@ -1,10 +1,10 @@
 {
-  "name": "Thesaurus Index Browser TIB",
-  "short_name": "TIB",
+  "name": "Countdown Timer",
+  "short_name": "Timer",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#E1F7F7",
-  "description": "A PWA editor for plain text with search and replace funtions.",
+  "description": "A PWA timer for countdowning.",
   "icons": [{
     "src": "assets/favicon/favicon.png",
     "sizes": "512x512",
